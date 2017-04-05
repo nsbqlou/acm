@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main()
+{
+    int m,n,c,i,j;
+    int ge,shi,bai;
+    while(scanf("%d%d",&m,&n)!=EOF){
+                 int a[900];
+                 i=0;
+                 for(c=m;c<=n;c++)
+                      {
+                ge=c%10;
+                shi=(c%100-ge)/10;
+                bai=(c-ge-shi*10)/100;
+                                  if (c==ge*ge*ge+shi*shi*shi+bai*bai*bai)
+                                   a[i++]=c;
+                      }
+        if (i==0)
+        printf("no\n");
+        if (i>0)
+             {
+               for(j=0;j<i;j++)
+               {
+                     printf("%d",a[j]);
+                      if(j<i-1)
+                    printf(" ");
+                }
+                printf("\n");
+               }
+    }
+             return 0;
+             }
