@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main()
+{
+	int i;
+	int T,S;
+	int A[1000];
+	int B[1000];
+	scanf("%d",&T);
+	for(i=1;i<=T;i++)
+	{
+		scanf("%d%d",&A[i],&B[i]);
+	if (A[i]>=100)
+		A[i]%=100;
+	if (B[i]>=100)
+		B[i]%=100;
+	S=A[i]+B[i];
+	if (S>=100)
+		S%=100;
+	printf("%d\n",S);
+	}
+	return 0;
+}
