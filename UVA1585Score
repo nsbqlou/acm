@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main()
+{
+    int T;
+    scanf("%d",&T);/*number of cases*/
+    char a[81];
+    int i,j,score;
+    int v[81];
+    for(i=1;i<=T;i++)
+        {
+            scanf("%s",a);
+            v[0]=(a[0]=='O');
+            score=v[0];
+            for(j=1;a[j]=='O'||a[j]=='X';j++)
+        {
+        v[j]=v[j-1]+1;
+        if (a[j]=='X')
+            v[j]=0;
+            score+=v[j];
+        }
+        printf("%d\n",score);
+        }
+        return 0;
+}
