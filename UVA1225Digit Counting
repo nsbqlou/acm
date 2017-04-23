@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int i,j,n,N;
+    scanf("%d",&n);
+    int str[15];
+    for(j=1;j<=n;j++)
+        {
+            memset(str,0,sizeof(str));
+            scanf("%d",&N);
+            for(i=1;i<=N;i++)
+            {
+                if(i/1000) {str[i/1000]++;str[(i/100)%10]++;str[(i/10)%10]++;str[i%10]++;}
+                else if(i/100) {str[(i/100)%10]++;str[(i/10)%10]++;str[i%10]++;}
+                else if(i/10) {str[(i/10)%10]++;str[i%10]++;}
+                else str[i]++;
+            }
+            for(i=0;i<=9;i++)
+                {printf("%d",str[i]);
+            if (i!=9)
+                printf(" ");
+                }
+            printf("\n");
+        }
+return 0;
+}
