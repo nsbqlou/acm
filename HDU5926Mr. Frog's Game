@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
+int n,m,g[50][50];
+int f[4][2]= {{0,1},{1,0},{-1,0},{0,-1}};
+int i,j;
+bool s()
+{
+    for(i=1; i<=n; i++) /*shu*/
+        for(j=i+1; j<=n; j++)
+            if(g[i][1]==g[j][1])
+                return true;
+    for(i=1; i<=n; i++) /*shu*/
+        for(j=i+1; j<=n; j++)
+            if(g[i][m]==g[j][m])
+                return true;
+    for(i=1; i<=m; i++) /*heng*/
+        for(j=i+1; j<=m; j++)
+            if(g[1][i]==g[1][j])
+                return true;
+    for(i=1; i<=m; i++) /*heng*/
+        for(j=i+1; j<=m; j++)
+            if(g[n][i]==g[n][j])
+                return true;
+    for(i=2; i<n; i++)
+        for(j=2; j<m; j++)
+            for(int k=0; k<4; k++)
+            {
+                int x=f[k][0]+i,y=j+f[k][1];
+                if(g[i][j]==g[x][y])
+                    return true;
+            }
+    return false;
+}
+int main()
+{
+    int t,T;
+    scanf("%d",&T);
+    for(t=1; t<=T; t++)
+    {
+        scanf("%d %d",&n,&m);
+        for(int i=1; i<=n; i++)
+            for(int j=1; j<=m; j++)
+                scanf("%d",&g[i][j]);
+        printf("Case #%d: ",t);
+        if(s()==1)
+            printf("Yes\n");
+        else
+            printf("No\n");
+    }
+    return 0;
+}
