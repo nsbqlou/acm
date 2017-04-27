@@ -1,0 +1,102 @@
+／＊版本一＊／
+#include<iostream>
+using namespace std;
+bool a[9][9];
+bool now[9];
+int way;
+int n,k;
+void dfs(int hang,int s)
+{
+    if(s==k)
+    {
+        way++;
+        return;
+    }
+
+    if(hang>n)
+        return;
+
+    for(int j=1;j<=n;j++)
+        if(a[hang][j] && !now[j])
+        {
+            now[j]=true;
+            dfs(hang+1,s+1);
+            now[j]=false;
+        }
+    dfs(hang+1,s);
+    return;
+}
+
+int main(int i,int j)
+{
+    while(cin>>n>>k)
+    {
+        if(n==-1 && k==-1)
+            break;
+        memset(now,false,sizeof(now));
+        memset(a,false,sizeof(a));
+        way=0;
+        for(i=1;i<=n;i++)
+            for(j=1;j<=n;j++)
+            {
+                char temp;
+                cin>>temp;
+                if(temp=='#')
+                    a[i][j]=true;
+            }
+        dfs(1,0);
+        cout<<way<<endl;
+    }
+    return 0;
+}
+
+
+／＊ｖｅｒｓｉｏｎ　２＊／
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+using namespace std;
+char a[10][10];
+int now[10];
+int n,k;
+int way,s;
+void dfs(int hang)
+{
+    if(k==s)
+    {
+        way++;
+        return ;
+    }
+
+
+    if(hang>=n)
+        return ;
+
+
+    for(int j=0; j<n; j++)
+        if(now[j]==0 && a[hang][j]=='#')
+        {
+            now[j]=1;
+            s++;
+            dfs(hang+1);
+            now[j]=0;
+            s--;
+        }
+    dfs(hang+1);
+}
+
+int main()
+{
+    int i,j;
+    while(scanf("%d%d",&n,&k)&&(n!=-1||k!=-1))
+    {
+        way=0;
+        s=0;
+        for(i=0; i<n; i++)
+            scanf("%s",&a[i]);
+        memset(now,0,sizeof(now));
+        dfs(0);
+        printf("%d\n",way);
+    }
+    return 0;
+}
