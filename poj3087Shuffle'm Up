@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define Max 110
+#define time 1000
+char zuo[Max];
+char you[Max];
+char result[2*Max];
+char ary[2*Max];
+int Case;
+int c,i,t;
+int main(){
+	int test=1;
+	scanf("%d",&Case);
+    while(Case--){
+		scanf("%d",&c);
+		getchar();/*遇到换行符就会停*/
+		for(i=0;i<c;i++)
+			zuo[i]=getchar();
+	      getchar();
+		for(i=0;i<c;i++)
+			you[i]=getchar();
+	    scanf("%s",ary);
+           
+
+t=1;
+            /*t is times*/
+
+while(t<=time){
+			int pivot=0;
+			for(i=0;i<c;i++){
+				result[pivot++]=you[i];
+				result[pivot++]=zuo[i];
+			}
+			result[2*c]='\0';
+			if(strcmp(result,ary)==0){
+				printf("%d %d\n",test,t);
+				break;
+			}
+			for(i=0;i<c;i++)
+				zuo[i]=result[i];
+			for(i=c;i<2*c;i++)
+				you[i-c]=result[i];
+			t++;/*fenpai */
+		}
+		if(t>time)
+		printf("%d -1\n",test);
+		test++;
+	}
+	return 0;
+}
