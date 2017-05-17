@@ -33,3 +33,29 @@ for(k=i+1;;k++)
     }
 return 0;
  } 
+
+
+
+老师帮改后
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+int i,k,a;
+int is_prime;
+scanf("%d",&i);
+for(k=i+1;;k++)
+{
+	    is_prime=1;
+        for(a=2;a<=sqrt(k);a++)
+        {
+			if (k%a==0)
+               is_prime=0;
+		}
+
+         if (is_prime==1)
+         {printf("prime=%d\n",k);
+         break;}
+    }
+return 0;
+ } 
